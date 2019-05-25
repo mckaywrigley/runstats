@@ -24,4 +24,27 @@ router.post("/", (req, res) => {
   }
 });
 
+router.get("/user/:id", (req, res) => {
+  const { id } = req.params.id;
+  Run.findById({ _id: id })
+    .then(runs => {
+      if (runs) {
+        return res.status(200).json(runs);
+      } else {
+        return res.status(404).json({
+          message: "Run for user with specified ID could not be found."
+        });
+      }
+    })
+    .catch(err => {
+      return res.status(500).json(err);
+    });
+});
+
+router.get("/:id", (req, res) => {});
+
+router.put("/", (req, res) => {});
+
+router.delete("/", (req, res) => {});
+
 module.exports = router;
