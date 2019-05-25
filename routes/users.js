@@ -18,4 +18,21 @@ router.get("/", (req, res) => {
     });
 });
 
+router.get("/:id", (req, res) => {
+  const { id } = req.params;
+  User.findOne({ _id: id })
+    .then(user => {
+      if (user) {
+        return res.status(200).json(user);
+      } else {
+        return res
+          .status(404)
+          .json({ message: "User with that ID could not be found." });
+      }
+    })
+    .catch(err => {
+      return res.status(500).json(err);
+    });
+});
+
 module.exports = router;
