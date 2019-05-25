@@ -18,9 +18,11 @@ app.use(bodyParser.json());
 
 const authRoutes = require("./routes/auth");
 const runRoutes = require("./routes/runs");
+const userRoutes = require("./routes/users");
 
 app.use("/api/auth", authRoutes);
 app.use("/api/runs", runRoutes);
+app.use("/api/users", userRoutes);
 
 const port = process.env.PORT || 5000;
 
