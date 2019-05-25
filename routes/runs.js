@@ -25,8 +25,8 @@ router.post("/", (req, res) => {
 });
 
 router.get("/user/:id", (req, res) => {
-  const { id } = req.params.id;
-  Run.findById({ _id: id })
+  const { id } = req.params;
+  Run.find({ user: id })
     .then(runs => {
       if (runs) {
         return res.status(200).json(runs);

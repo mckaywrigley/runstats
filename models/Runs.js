@@ -5,7 +5,8 @@ const Schema = mongoose.Schema;
 mongoose.set("useCreateIndex", true);
 
 const RunSchema = new Schema({
-  user_id: { type: mongoose.Schema.Types.ObjectId, ref: "users" },
+  // References user
+  user: { type: Schema.Types.ObjectId, ref: "users" },
   distance: { type: Number, required: true },
   //   Saves time as an inter in milliseconds
   duration: { type: Number, required: true },
