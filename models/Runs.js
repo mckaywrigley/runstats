@@ -7,7 +7,8 @@ mongoose.set("useCreateIndex", true);
 const RunSchema = new Schema({
   distance: { type: Number, required: true },
   //   Saves time as an inter in milliseconds
-  time: { type: Number, required: true },
+  duration: { type: Number, required: true },
+  date: { type: Date, required: true },
   location: { type: String },
   description: { type: String }
 });
