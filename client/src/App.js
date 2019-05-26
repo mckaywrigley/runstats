@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 
 // React Router
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
-// Auth
-import jwt_decode from "jwt-decode";
-import setAuthToken from "./utils/setAuthToken";
-import { setCurrentUser, logoutUser } from "./actions";
+// Components
+import Register from "./components/auth/Register";
+import Login from "./components/auth/Login";
 
 import "./App.css";
 

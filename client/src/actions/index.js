@@ -3,7 +3,7 @@ import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 import { SET_CURRENT_USER } from "./types";
 
-const URL = "https://droom-buildweek-4-15-19.herokuapp.com";
+const URL = "https://mckay-runstats.herokuapp.com";
 
 // Auth --------------------------
 

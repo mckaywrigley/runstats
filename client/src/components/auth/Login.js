@@ -35,10 +35,6 @@ class Login extends Component {
     if (!this.props.auth.isAuthenticated) {
       return (
         <>
-          <img
-            src="https://res.cloudinary.com/dmdvv8dzx/image/upload/v1555644420/undraw_authentication_fsn5_login_c3fvmk.png"
-            alt="login background"
-          />
           <form>
             <h2>Welcome back!</h2>
             <div>

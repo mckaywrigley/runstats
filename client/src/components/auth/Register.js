@@ -7,6 +7,7 @@ class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      email: "",
       username: "",
       password: "",
       password2: ""
@@ -25,6 +26,7 @@ class Register extends Component {
 
     const user = {
       username: this.state.username,
+      email: this.state.email,
       password: this.state.password
     };
 
@@ -35,29 +37,34 @@ class Register extends Component {
     if (!this.props.auth.isAuthenticated) {
       return (
         <>
-          <img
-            src="https://res.cloudinary.com/dmdvv8dzx/image/upload/v1555644420/Illustration_register_cergkm.png"
-            alt="signup background"
-          />
           <form>
             <h2>Create a new account.</h2>
             <div>
               <input
-                name="username"
-                type="username"
-                placeholder="username"
-                value={this.state.username}
+                name="email"
+                type="email"
+                placeholder="email"
+                value={this.state.email}
                 onChange={this.inputChange}
               />
-            </div>
-            <div>
-              <input
-                name="password"
-                type="password"
-                placeholder="password"
-                value={this.state.password}
-                onChange={this.inputChange}
-              />
+              <div>
+                <input
+                  name="username"
+                  type="username"
+                  placeholder="username"
+                  value={this.state.username}
+                  onChange={this.inputChange}
+                />
+              </div>
+              <div>
+                <input
+                  name="password"
+                  type="password"
+                  placeholder="password"
+                  value={this.state.password}
+                  onChange={this.inputChange}
+                />
+              </div>
             </div>
             <div>
               <input
