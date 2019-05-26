@@ -4,6 +4,7 @@ import jwt_decode from "jwt-decode";
 import { SET_CURRENT_USER } from "./types";
 
 const URL = "https://mckay-runstats.herokuapp.com";
+// const URL = "http://localhost:4000";
 
 // Auth --------------------------
 
