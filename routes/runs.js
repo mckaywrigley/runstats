@@ -32,7 +32,7 @@ router.get("/user/:id", (req, res) => {
         return res.status(200).json(runs);
       } else {
         return res.status(404).json({
-          message: "Run for user with specified ID could not be found."
+          message: "Runs for user with specified ID could not be found."
         });
       }
     })
@@ -41,7 +41,22 @@ router.get("/user/:id", (req, res) => {
     });
 });
 
-router.get("/:id", (req, res) => {});
+router.get("/:id", (req, res) => {
+  const { id } = req.params;
+  Run.findOne({ _id: id })
+    .then(run => {
+      if (run) {
+        return res.status(200).json(run);
+      } else {
+        return res.status(404).json({
+          message: "Run with specified ID could not be found."
+        });
+      }
+    })
+    .catch(err => {
+      return res.status(500).json(err);
+    });
+});
 
 router.put("/", (req, res) => {});
 
