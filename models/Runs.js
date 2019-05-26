@@ -2,8 +2,6 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-mongoose.set("useCreateIndex", true);
-
 const RunSchema = new Schema({
   // References user
   user: { type: Schema.Types.ObjectId, ref: "users" },

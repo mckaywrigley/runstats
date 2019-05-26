@@ -9,7 +9,11 @@ const keys = require("./config/keys");
 const app = express();
 
 mongoose
-  .connect(keys.mongoURI, { useNewUrlParser: true })
+  .connect(keys.mongoURI, {
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useCreateIndex: true
+  })
   .then(res => console.log(`Connected to MongoDB.`));
 
 app.use(cors());

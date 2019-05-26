@@ -35,23 +35,38 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.put('/:id', (res, res) => {
-    const { id } = req.params;
-    User.findOneAndUpdate({_id: id})
+router.put("/:id", (req, res) => {
+  const { id } = req.params;
+  User.findByIdAndUpdate({ _id: id }, { $set: req.body })
     .then(user => {
-        if (user) {
-          return res.status(200).json(user);
-        } else {
-          return res
-            .status(404)
-            .json({ message: "User with that ID could not be found." });
-        }
-      })
-      .catch(err => {
-        return res.status(500).json(err);
-      });
-})
+      if (user) {
+        return res.status(200).json(user);
+      } else {
+        return res
+          .status(404)
+          .json({ message: "User with that ID could not be found." });
+      }
+    })
+    .catch(err => {
+      return res.status(500).json(err);
+    });
+});
 
-router.delete('/:id', (res, res) => {})
+router.delete("/:id", (req, res) => {
+  const { id } = req.params;
+  User.findOneAndDelete({ _id: id })
+    .then(user => {
+      if (user) {
+        return res.status(200).json(user);
+      } else {
+        return res
+          .status(404)
+          .json({ message: "User with that ID could not be found." });
+      }
+    })
+    .catch(err => {
+      return res.status(500).json(err);
+    });
+});
 
 module.exports = router;
