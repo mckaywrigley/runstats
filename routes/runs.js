@@ -57,7 +57,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.put("/", (req, res) => {
+router.put("/:id", (req, res) => {
   const { id } = req.params;
   Run.findByIdAndUpdate({ _id: id }, { $set: req.body })
     .then(run => {
@@ -74,6 +74,21 @@ router.put("/", (req, res) => {
     });
 });
 
-router.delete("/", (req, res) => {});
+router.delete("/:id", (req, res) => {
+  const { id } = req.params;
+  Run.findOneAndDelete({ _id: id })
+    .then(run => {
+      if (run) {
+        return res.status(200).json(run);
+      } else {
+        return res
+          .status(404)
+          .json({ message: "Run with that ID could not be found." });
+      }
+    })
+    .catch(err => {
+      return res.status(500).json(err);
+    });
+});
 
 module.exports = router;
