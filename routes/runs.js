@@ -1,5 +1,4 @@
 const express = require("express");
-const moment = require("moment");
 
 const router = express.Router();
 
@@ -58,7 +57,22 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.put("/", (req, res) => {});
+router.put("/", (req, res) => {
+  const { id } = req.params;
+  Run.findByIdAndUpdate({ _id: id }, { $set: req.body })
+    .then(run => {
+      if (run) {
+        return res.status(200).json(run);
+      } else {
+        return res
+          .status(404)
+          .json({ message: "Run with that ID could not be found." });
+      }
+    })
+    .catch(err => {
+      return res.status(500).json(err);
+    });
+});
 
 router.delete("/", (req, res) => {});
 
