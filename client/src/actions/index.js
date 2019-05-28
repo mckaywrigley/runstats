@@ -1,8 +1,7 @@
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
-import { SET_CURRENT_USER } from "./types";
-import { ADD_RUN_SUCCESS } from "./types";
+import { SET_CURRENT_USER, ADD_RUN_SUCCESS, GET_USER_RUNS } from "./types";
 
 // const URL = "https://mckay-runstats.herokuapp.com";
 const URL = "http://localhost:4000";
@@ -73,6 +72,21 @@ export const addRun = run => dispatch => {
       dispatch({
         type: ADD_RUN_SUCCESS,
         payload: run
+      });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+export const getUserRuns = userID => dispatch => {
+  axios
+    .get(`${URL}/api/runs/user/${userID}`)
+    .then(res => {
+      console.log(res);
+      dispatch({
+        type: GET_USER_RUNS,
+        payload: res.data
       });
     })
     .catch(err => {
