@@ -47,7 +47,6 @@ export const loginUser = userData => dispatch => {
 
 // set user
 export const setCurrentUser = decoded => {
-  console.log(decoded);
   return {
     type: SET_CURRENT_USER,
     payload: decoded
@@ -78,6 +77,6 @@ export const addRun = run => dispatch => {
       });
     })
     .catch(err => {
-      console.log(err.message);
+      console.log(err);
     });
 };

@@ -5,6 +5,7 @@ const router = express.Router();
 const Run = require("../models/Runs");
 
 router.post("/", (req, res) => {
+  console.log(req.body);
   const run = new Run(req.body);
   const { distance, date } = req.body;
   if (!distance || !date) {

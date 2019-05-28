@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addRun, setCurrentUser } from "../../actions";
 
+import moment from "moment";
+
 class AddRun extends Component {
   constructor() {
     super();
@@ -19,36 +21,32 @@ class AddRun extends Component {
     };
   }
 
-  componentDidMount() {
-    this.props.setCurrentUser();
-  }
-
   formatDuration = (hr, min, sec) => {
-    const hms = `${hr}:${min}:${sec}`;
-    const a = hms.split(":"); // split it at the colons
-
+    const hms = `${hr}hr ${min}min ${sec}sec`;
+    const arr = `${hr}:${min}:${sec}`;
+    const a = arr.split(":"); // split it at the colons
     // minutes are worth 60 seconds. Hours are worth 60 minutes.
     const seconds = +a[0] * 60 * 60 + +a[1] * 60 + +a[2];
-
     this.setState({
       secondDuration: seconds,
       stringDuration: hms
     });
+    console.log(this.state);
   };
 
   submit = e => {
     e.preventDefault();
-    this.formatDuration(
-      this.state.hours,
-      this.state.minutes,
-      this.state.seconds
-    );
+    // this.formatDuration(
+    //   this.state.hours,
+    //   this.state.minutes,
+    //   this.state.seconds
+    // );
     const run = {
       user: this.state.user,
-      distance: this.state.distance,
-      secondDuration: this.state.secondDuration,
+      distance: Number(this.state.distance),
+      secondDuration: Number(this.state.secondDuration),
       stringDuration: this.state.stringDuration,
-      date: this.state.date,
+      date: moment(this.state.date).format("MMMM Do YYYY"),
       location: this.state.location,
       description: this.state.description
     };
@@ -59,6 +57,18 @@ class AddRun extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
+    console.log(this.state);
+  };
+
+  hmsChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+    this.formatDuration(
+      this.state.hours,
+      this.state.minutes,
+      this.state.seconds
+    );
   };
 
   render() {
@@ -69,7 +79,7 @@ class AddRun extends Component {
           <input
             type="number"
             name="distance"
-            placeholder="distance"
+            placeholder="distance in miles"
             value={this.state.distance}
             onChange={this.inputChange}
           />
@@ -78,7 +88,7 @@ class AddRun extends Component {
             name="hours"
             placeholder="hours"
             value={this.state.hours}
-            onChange={this.inputChange}
+            onChange={this.hmsChange}
             min="0"
             max="24"
           />
@@ -87,7 +97,7 @@ class AddRun extends Component {
             name="minutes"
             placeholder="minutes"
             value={this.state.minutes}
-            onChange={this.inputChange}
+            onChange={this.hmsChange}
             min="0"
             max="59"
           />
@@ -96,7 +106,7 @@ class AddRun extends Component {
             name="seconds"
             placeholder="seconds"
             value={this.state.seconds}
-            onChange={this.inputChange}
+            onChange={this.hmsChange}
             min="0"
             max="59"
           />

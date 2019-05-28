@@ -9,7 +9,7 @@ const RunSchema = new Schema({
   //   Saves time as an inter in milliseconds
   secondDuration: { type: Number, required: true },
   stringDuration: { type: String, required: true },
-  date: { type: Date, required: true },
+  date: { type: String, required: true },
   location: { type: String },
   description: { type: String }
 });
