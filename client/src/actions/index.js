@@ -2,9 +2,10 @@ import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 import { SET_CURRENT_USER } from "./types";
+import { ADD_RUN_SUCCESS } from "./types";
 
-const URL = "https://mckay-runstats.herokuapp.com";
-// const URL = "http://localhost:4000";
+// const URL = "https://mckay-runstats.herokuapp.com";
+const URL = "http://localhost:4000";
 
 // Auth --------------------------
 
@@ -37,6 +38,7 @@ export const loginUser = userData => dispatch => {
       setAuthToken(res.data.token);
       // decode token
       const decoded = jwt_decode(res.data.token);
+      localStorage.setItem("userID", decoded.subject);
       // set current user
       dispatch(setCurrentUser(decoded));
     })
@@ -45,6 +47,7 @@ export const loginUser = userData => dispatch => {
 
 // set user
 export const setCurrentUser = decoded => {
+  console.log(decoded);
   return {
     type: SET_CURRENT_USER,
     payload: decoded
@@ -59,4 +62,22 @@ export const logoutUser = () => dispatch => {
   setAuthToken(false);
   // set current user to empty object
   dispatch(setCurrentUser({}));
+};
+
+// Runs --------------------------
+
+// Add Run
+export const addRun = run => dispatch => {
+  axios
+    .post(`${URL}/api/runs/`, run)
+    .then(res => {
+      console.log(res);
+      dispatch({
+        type: ADD_RUN_SUCCESS,
+        payload: run
+      });
+    })
+    .catch(err => {
+      console.log(err.message);
+    });
 };

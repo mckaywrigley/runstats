@@ -7,7 +7,8 @@ const RunSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: "users" },
   distance: { type: Number, required: true },
   //   Saves time as an inter in milliseconds
-  duration: { type: Number, required: true },
+  secondDuration: { type: Number, required: true },
+  stringDuration: { type: String, required: true },
   date: { type: Date, required: true },
   location: { type: String },
   description: { type: String }

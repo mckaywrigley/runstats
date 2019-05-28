@@ -6,8 +6,8 @@ const Run = require("../models/Runs");
 
 router.post("/", (req, res) => {
   const run = new Run(req.body);
-  const { distance, duration, date } = req.body;
-  if (!distance || !duration || !date) {
+  const { distance, date } = req.body;
+  if (!distance || !date) {
     return res
       .status(400)
       .json({ message: "Please provide a distance, duration, and date." });
@@ -18,7 +18,9 @@ router.post("/", (req, res) => {
         return res.status(200).json(run);
       })
       .catch(err => {
-        return res.status(500).json(err);
+        return res
+          .status(500)
+          .json({ message: `Could not save run to database: ${err}` });
       });
   }
 });
