@@ -8,7 +8,6 @@ class AddRun extends Component {
   constructor() {
     super();
     this.state = {
-      user: localStorage.getItem("userID"),
       distance: "",
       hours: "",
       minutes: "",
@@ -36,13 +35,8 @@ class AddRun extends Component {
 
   submit = e => {
     e.preventDefault();
-    // this.formatDuration(
-    //   this.state.hours,
-    //   this.state.minutes,
-    //   this.state.seconds
-    // );
     const run = {
-      user: this.state.user,
+      user: this.props.auth.user.subject,
       distance: Number(this.state.distance),
       secondDuration: Number(this.state.secondDuration),
       stringDuration: this.state.stringDuration,
@@ -57,7 +51,6 @@ class AddRun extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
-    console.log(this.state);
   };
 
   hmsChange = e => {
