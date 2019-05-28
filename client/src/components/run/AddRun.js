@@ -30,7 +30,6 @@ class AddRun extends Component {
       secondDuration: seconds,
       stringDuration: hms
     });
-    console.log(this.state);
   };
 
   submit = e => {
