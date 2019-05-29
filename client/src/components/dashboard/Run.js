@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { deleteRun } from "../../actions";
+import { deleteRun, getRun } from "../../actions";
 
 import "./Run.scss";
 
@@ -15,7 +15,11 @@ class Run extends Component {
         <p>{this.props.location}</p>
         <p>{this.props.description}</p>
         <Link to={"/editrun"}>
-          <button>Edit</button>
+          <button
+            onClick={e => localStorage.setItem("currentRunID", this.props.id)}
+          >
+            Edit
+          </button>
         </Link>
         <button onClick={e => this.props.deleteRun(this.props.id)}>
           Delete
@@ -32,5 +36,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { deleteRun }
+  { deleteRun, getRun }
 )(Run);

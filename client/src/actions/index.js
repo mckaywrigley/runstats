@@ -1,7 +1,12 @@
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
-import { SET_CURRENT_USER, ADD_RUN_SUCCESS, GET_USER_RUNS } from "./types";
+import {
+  SET_CURRENT_USER,
+  ADD_RUN_SUCCESS,
+  GET_USER_RUNS,
+  GET_USER_RUN
+} from "./types";
 
 // const URL = "https://mckay-runstats.herokuapp.com";
 const URL = "http://localhost:4000";
@@ -79,6 +84,22 @@ export const addRun = run => dispatch => {
     });
 };
 
+// Get Run
+export const getRun = runID => dispatch => {
+  axios
+    .get(`${URL}/api/runs/${runID}`)
+    .then(res => {
+      console.log(res);
+      dispatch({
+        type: GET_USER_RUN,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
 // Get Runs
 export const getUserRuns = userID => dispatch => {
   axios
@@ -101,6 +122,22 @@ export const deleteRun = runID => dispatch => {
     .delete(`${URL}/api/runs/${runID}`)
     .then(res => {
       console.log(res);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+// Edit Run
+export const editRun = (runID, run) => dispatch => {
+  axios
+    .post(`${URL}/api/runs/${runID}`, run)
+    .then(res => {
+      console.log(res);
+      dispatch({
+        type: ADD_RUN_SUCCESS,
+        payload: run
+      });
     })
     .catch(err => {
       console.log(err);

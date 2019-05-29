@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addRun, setCurrentUser } from "../../actions";
+import { addRun, setCurrentUser, getRun } from "../../actions";
 
 import moment from "moment";
 
@@ -18,6 +18,23 @@ class EditRun extends Component {
       location: "",
       description: ""
     };
+  }
+
+  componentDidMount() {
+    this.props.getRun(localStorage.currentRunID);
+    console.log(this.props.run);
+    console.log(this.props.run.currentRun.distance);
+    this.setState({
+      distance: this.props.run.currentRun.distance,
+      hours: "",
+      minutes: "",
+      seconds: "",
+      secondDuration: this.props.run.currentRun.secondDuration,
+      stringDuration: this.props.run.currentRun.stringDuration,
+      date: this.props.run.currentRun.date,
+      location: this.props.run.currentRun.location,
+      description: this.props.run.currentRun.description
+    });
   }
 
   formatDuration = (hr, min, sec) => {
@@ -66,7 +83,7 @@ class EditRun extends Component {
   render() {
     return (
       <div>
-        <h2>Add Run</h2>
+        <h2>Edit Run</h2>
         <form action="">
           <input
             type="number"
@@ -139,5 +156,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { addRun, setCurrentUser }
+  { addRun, setCurrentUser, getRun }
 )(EditRun);
