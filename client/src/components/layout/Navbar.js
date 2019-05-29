@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
+import { logoutUser } from "../../actions";
 
 class Navbar extends Component {
   render() {
@@ -18,6 +19,7 @@ class Navbar extends Component {
         <h2>Navbar</h2>
         <NavLink to="/dashboard">Dashboard</NavLink>
         <NavLink to="/addRun">Add Run</NavLink>
+        <button onClick={e => this.props.logoutUser()}>Logout</button>
       </div>
     );
   }
@@ -29,5 +31,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  null
+  { logoutUser }
 )(Navbar);

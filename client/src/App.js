@@ -22,12 +22,12 @@ class App extends Component {
         <Router>
           <h1>Runstats</h1>
           <Navbar />
-          <Footer />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/addrun" component={AddRun} />
           <Route exact path="/editrun" component={EditRun} />
           <Route exact path="/dashboard" component={Dashboard} />
+          <Footer />
         </Router>
       </>
     );
