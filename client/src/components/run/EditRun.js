@@ -24,17 +24,17 @@ class EditRun extends Component {
     this.props.getRun(localStorage.currentRunID);
     console.log(this.props.run);
     console.log(this.props.run.currentRun.distance);
-    this.setState({
-      distance: this.props.run.currentRun.distance,
-      hours: "",
-      minutes: "",
-      seconds: "",
-      secondDuration: this.props.run.currentRun.secondDuration,
-      stringDuration: this.props.run.currentRun.stringDuration,
-      date: this.props.run.currentRun.date,
-      location: this.props.run.currentRun.location,
-      description: this.props.run.currentRun.description
-    });
+    // this.setState({
+    //   distance: this.props.run.currentRun.distance,
+    //   hours: "",
+    //   minutes: "",
+    //   seconds: "",
+    //   secondDuration: this.props.run.currentRun.secondDuration,
+    //   stringDuration: this.props.run.currentRun.stringDuration,
+    //   date: this.props.run.currentRun.date,
+    //   location: this.props.run.currentRun.location,
+    //   description: this.props.run.currentRun.description
+    // });
   }
 
   formatDuration = (hr, min, sec) => {
