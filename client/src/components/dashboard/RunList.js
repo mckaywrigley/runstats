@@ -29,6 +29,7 @@ class RunList extends Component {
           return (
             <Run
               key={run._id}
+              id={run._id}
               distance={run.distance}
               duration={run.stringDuration}
               date={run.date}

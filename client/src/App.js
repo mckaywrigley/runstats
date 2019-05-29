@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import AddRun from "./components/run/AddRun";
+import EditRun from "./components/run/EditRun";
 import Dashboard from "./components/dashboard/Dashboard";
 
 // Styling
@@ -21,6 +22,7 @@ class App extends Component {
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/addrun" component={AddRun} />
+          <Route exact path="/editrun" component={EditRun} />
           <Route exact path="/dashboard" component={Dashboard} />
         </Router>
       </>

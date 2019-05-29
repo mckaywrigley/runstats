@@ -79,6 +79,7 @@ export const addRun = run => dispatch => {
     });
 };
 
+// Get Runs
 export const getUserRuns = userID => dispatch => {
   axios
     .get(`${URL}/api/runs/user/${userID}`)
@@ -88,6 +89,18 @@ export const getUserRuns = userID => dispatch => {
         type: GET_USER_RUNS,
         payload: res.data
       });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+// Delete Run
+export const deleteRun = runID => dispatch => {
+  axios
+    .delete(`${URL}/api/runs/${runID}`)
+    .then(res => {
+      console.log(res);
     })
     .catch(err => {
       console.log(err);

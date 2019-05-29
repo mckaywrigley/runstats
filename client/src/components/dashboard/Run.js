@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { deleteRun } from "../../actions";
 
 import "./Run.scss";
 
@@ -11,9 +14,23 @@ class Run extends Component {
         <p>{this.props.date}</p>
         <p>{this.props.location}</p>
         <p>{this.props.description}</p>
+        <Link to={"/editrun"}>
+          <button>Edit</button>
+        </Link>
+        <button onClick={e => this.props.deleteRun(this.props.id)}>
+          Delete
+        </button>
       </div>
     );
   }
 }
 
-export default Run;
+const mapStateToProps = state => ({
+  auth: state.auth,
+  run: state.run
+});
+
+export default connect(
+  mapStateToProps,
+  { deleteRun }
+)(Run);
