@@ -10,6 +10,7 @@ import AddRun from "./components/run/AddRun";
 import EditRun from "./components/run/EditRun";
 import Dashboard from "./components/dashboard/Dashboard";
 import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
 
 // Styling
 import "./App.css";
@@ -21,6 +22,7 @@ class App extends Component {
         <Router>
           <h1>Runstats</h1>
           <Navbar />
+          <Footer />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/addrun" component={AddRun} />
