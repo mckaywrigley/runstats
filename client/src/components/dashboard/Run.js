@@ -9,7 +9,6 @@ import {
   CardText,
   CardBody,
   CardTitle,
-  CardSubtitle,
   Button
 } from "reactstrap";
 
@@ -19,11 +18,11 @@ class Run extends Component {
   render() {
     return (
       <Card className="run">
-        <CardImg
+        {/* <CardImg
           src="https://cdn.runningshoesguru.com/wp-content/uploads/2018/11/Best-Nike-Running-Shoes.jpg"
           alt="Image"
           className="runImg"
-        />
+        /> */}
         <CardBody>
           <CardTitle>Date: {this.props.date}</CardTitle>
           <CardTitle>Distance: {this.props.distance}mi</CardTitle>

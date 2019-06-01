@@ -24,20 +24,22 @@ class RunList extends Component {
     }
     return (
       <div>
-        <h2>Run List</h2>
-        {this.props.run.runs.map(run => {
-          return (
-            <Run
-              key={run._id}
-              id={run._id}
-              distance={run.distance}
-              duration={run.stringDuration}
-              date={run.date}
-              location={run.location}
-              description={run.description}
-            />
-          );
-        })}
+        <h2>Runs</h2>
+        <div className="runList">
+          {this.props.run.runs.map(run => {
+            return (
+              <Run
+                key={run._id}
+                id={run._id}
+                distance={run.distance}
+                duration={run.stringDuration}
+                date={run.date}
+                location={run.location}
+                description={run.description}
+              />
+            );
+          })}
+        </div>
       </div>
     );
   }
