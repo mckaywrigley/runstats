@@ -4,6 +4,10 @@ import { addRun, setCurrentUser, getRun } from "../../actions";
 
 import moment from "moment";
 
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+
+import "./EditRun.scss";
+
 class EditRun extends Component {
   constructor() {
     super();
@@ -82,69 +86,80 @@ class EditRun extends Component {
 
   render() {
     return (
-      <div>
+      <Form className="editRunForm">
         <h2>Edit Run</h2>
-        <form action="">
-          <input
+        <FormGroup>
+          <Label for="distance">Distance</Label>
+          <Input
             type="number"
             name="distance"
+            id="distance"
             placeholder="distance in miles"
-            value={this.state.distance}
             onChange={this.inputChange}
           />
-          <input
+        </FormGroup>
+        <FormGroup>
+          <Label for="hours">Hours</Label>
+          <Input
             type="number"
             name="hours"
+            id="hours"
             placeholder="hours"
-            value={this.state.hours}
             onChange={this.hmsChange}
-            min="0"
-            max="24"
           />
-          <input
+        </FormGroup>
+        <FormGroup>
+          <Label for="minutes">Minutes</Label>
+          <Input
             type="number"
             name="minutes"
+            id="minutes"
             placeholder="minutes"
-            value={this.state.minutes}
             onChange={this.hmsChange}
-            min="0"
-            max="59"
           />
-          <input
+        </FormGroup>
+        <FormGroup>
+          <Label for="seconds">Seconds</Label>
+          <Input
             type="number"
             name="seconds"
+            id="seconds"
             placeholder="seconds"
-            value={this.state.seconds}
             onChange={this.hmsChange}
-            min="0"
-            max="59"
           />
-          <input
+        </FormGroup>
+        <FormGroup>
+          <Label for="date">Date</Label>
+          <Input
             type="date"
             name="date"
-            placeholder="date"
-            value={this.state.date}
+            id="date"
+            placeholder=""
             onChange={this.inputChange}
           />
-          <input
+        </FormGroup>
+        <FormGroup>
+          <Label for="location">Location</Label>
+          <Input
             type="text"
             name="location"
+            id="location"
             placeholder="location"
-            value={this.state.location}
             onChange={this.inputChange}
           />
-          <input
-            type="text"
+        </FormGroup>
+        <FormGroup>
+          <Label for="description">Description</Label>
+          <Input
+            type="textarea"
             name="description"
+            id="description"
             placeholder="description"
-            value={this.state.description}
             onChange={this.inputChange}
           />
-          <button type="submit" onClick={this.submit}>
-            Submit
-          </button>
-        </form>
-      </div>
+        </FormGroup>
+        <Button onClick={this.submit}>Submit</Button>
+      </Form>
     );
   }
 }

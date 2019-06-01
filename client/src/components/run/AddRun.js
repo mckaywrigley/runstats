@@ -4,7 +4,7 @@ import { addRun, setCurrentUser } from "../../actions";
 
 import moment from "moment";
 
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
 import "./AddRun.scss";
 
@@ -81,6 +81,7 @@ class AddRun extends Component {
   render() {
     return (
       <Form className="addRunForm">
+        <h2>Add Run</h2>
         <FormGroup>
           <Label for="distance">Distance</Label>
           <Input
