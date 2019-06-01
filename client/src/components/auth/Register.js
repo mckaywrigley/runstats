@@ -3,6 +3,10 @@ import { connect } from "react-redux";
 import { registerUser } from "../../actions";
 import { withRouter } from "react-router-dom";
 
+import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+
+import "./Register.scss";
+
 class Register extends Component {
   constructor(props) {
     super(props);
@@ -36,50 +40,53 @@ class Register extends Component {
   render() {
     if (!this.props.auth.isAuthenticated) {
       return (
-        <>
-          <form>
-            <h2>Create a new account.</h2>
-            <div>
-              <input
-                name="email"
-                type="email"
-                placeholder="email"
-                value={this.state.email}
-                onChange={this.inputChange}
-              />
-              <div>
-                <input
-                  name="username"
-                  type="username"
-                  placeholder="username"
-                  value={this.state.username}
-                  onChange={this.inputChange}
-                />
-              </div>
-              <div>
-                <input
-                  name="password"
-                  type="password"
-                  placeholder="password"
-                  value={this.state.password}
-                  onChange={this.inputChange}
-                />
-              </div>
-            </div>
-            <div>
-              <input
-                name="password2"
-                type="password"
-                placeholder="confirm password"
-                value={this.state.password2}
-                onChange={this.inputChange}
-              />
-            </div>
-            <button type="submit" onClick={this.handleSubmit}>
-              Sign Up
-            </button>
-          </form>
-        </>
+        <Form className="registerForm">
+          <FormGroup>
+            <Label for="email">Email</Label>
+            <Input
+              type="email"
+              name="email"
+              id="email"
+              placeholder=""
+              onChange={this.inputChange}
+              value={this.state.email}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="username">Username</Label>
+            <Input
+              type="text"
+              name="username"
+              id="username"
+              placeholder=""
+              onChange={this.inputChange}
+              value={this.state.username}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="password">Password</Label>
+            <Input
+              type="password"
+              name="password"
+              id="password"
+              placeholder=""
+              onChange={this.inputChange}
+              value={this.state.password}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="password2">Confirm Password</Label>
+            <Input
+              type="password"
+              name="password2"
+              id="password2"
+              placeholder=""
+              onChange={this.inputChange}
+              value={this.state.password2}
+            />
+          </FormGroup>
+          <Button>Submit</Button>
+        </Form>
       );
     }
   }
