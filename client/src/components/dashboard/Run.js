@@ -3,28 +3,49 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { deleteRun, getRun } from "../../actions";
 
+import {
+  Card,
+  CardImg,
+  CardText,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  Button
+} from "reactstrap";
+
 import "./Run.scss";
 
 class Run extends Component {
   render() {
     return (
-      <div className="run">
-        <p>{this.props.distance}mi</p>
-        <p>{this.props.duration}</p>
-        <p>{this.props.date}</p>
-        <p>{this.props.location}</p>
-        <p>{this.props.description}</p>
-        <Link to={"/editrun"}>
-          <button
-            onClick={e => localStorage.setItem("currentRunID", this.props.id)}
+      <Card className="run">
+        <CardImg
+          src="https://cdn.runningshoesguru.com/wp-content/uploads/2018/11/Best-Nike-Running-Shoes.jpg"
+          alt="Image"
+          className="runImg"
+        />
+        <CardBody>
+          <CardTitle>Date: {this.props.date}</CardTitle>
+          <CardTitle>Distance: {this.props.distance}mi</CardTitle>
+          <CardTitle>Duration: {this.props.duration}</CardTitle>
+          <CardTitle>Location: {this.props.location}</CardTitle>
+          <CardText>Description: {this.props.description}</CardText>
+          <Link to={"/editrun"}>
+            <Button
+              color="warning"
+              onClick={e => localStorage.setItem("currentRunID", this.props.id)}
+            >
+              Edit
+            </Button>{" "}
+          </Link>
+          <Button
+            color="danger"
+            onClick={e => this.props.deleteRun(this.props.id)}
           >
-            Edit
-          </button>
-        </Link>
-        <button onClick={e => this.props.deleteRun(this.props.id)}>
-          Delete
-        </button>
-      </div>
+            Delete
+          </Button>
+        </CardBody>
+      </Card>
     );
   }
 }
