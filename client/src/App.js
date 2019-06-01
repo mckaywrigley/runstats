@@ -26,7 +26,7 @@ class App extends Component {
           <Route exact path="/addrun" component={AddRun} />
           <Route exact path="/editrun" component={EditRun} />
           <Route exact path="/dashboard" component={Dashboard} />
-          <Footer />
+          {/* <Footer /> */}
         </Router>
       </>
     );
