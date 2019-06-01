@@ -1,25 +1,73 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions";
 
-class Navbar extends Component {
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink
+} from "reactstrap";
+
+import "./Navbar.scss";
+
+class NavbarComponent extends Component {
+  state = {
+    isOpen: false
+  };
+
+  toggle = () => {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  };
+
   render() {
     if (!this.props.auth.isAuthenticated) {
       return (
         <div>
-          <h2>Navbar</h2>
-          <NavLink to="/register">Register</NavLink>
-          <NavLink to="/login">Login</NavLink>
+          <Navbar color="light" light expand="md">
+            <NavbarBrand href="/">Runstats</NavbarBrand>
+            <NavbarToggler onClick={this.toggle} />
+            <Collapse isOpen={this.state.isOpen} navbar>
+              <Nav className="ml-auto" navbar>
+                <NavItem>
+                  <NavLink className="link" href="/register">
+                    Register
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink className="link" href="/login">
+                    Login
+                  </NavLink>
+                </NavItem>
+              </Nav>
+            </Collapse>
+          </Navbar>
         </div>
       );
     }
     return (
       <div>
-        <h2>Navbar</h2>
-        <NavLink to="/dashboard">Dashboard</NavLink>
-        <NavLink to="/addRun">Add Run</NavLink>
-        <button onClick={e => this.props.logoutUser()}>Logout</button>
+        <Navbar color="light" light expand="md">
+          <NavbarBrand href="/">Runstats</NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink
+                  className="link"
+                  onClick={e => this.props.logoutUser()}
+                >
+                  Logout
+                </NavLink>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Navbar>
       </div>
     );
   }
@@ -32,4 +80,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { logoutUser }
-)(Navbar);
+)(NavbarComponent);

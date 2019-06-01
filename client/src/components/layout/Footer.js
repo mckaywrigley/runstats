@@ -1,13 +1,18 @@
 import React, { Component } from "react";
 
-class Navbar extends Component {
+import { Navbar, NavbarToggler, NavbarBrand } from "reactstrap";
+
+class Footer extends Component {
   render() {
     return (
       <div>
-        <h2>Footer</h2>
+        <Navbar color="light" light expand="md">
+          <NavbarBrand href="/">Runstats</NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+        </Navbar>
       </div>
     );
   }
 }
 
-export default Navbar;
+export default Footer;

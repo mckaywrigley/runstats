@@ -9,7 +9,7 @@ import Login from "./components/auth/Login";
 import AddRun from "./components/run/AddRun";
 import EditRun from "./components/run/EditRun";
 import Dashboard from "./components/dashboard/Dashboard";
-import Navbar from "./components/layout/Navbar";
+import NavbarComponent from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 
 // Styling
@@ -20,8 +20,7 @@ class App extends Component {
     return (
       <>
         <Router>
-          <h1>Runstats</h1>
-          <Navbar />
+          <NavbarComponent />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/addrun" component={AddRun} />

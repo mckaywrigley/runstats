@@ -14,6 +14,8 @@ import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
 const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(thunk))
