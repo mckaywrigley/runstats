@@ -59,7 +59,7 @@ class LineChart extends Component {
   render() {
     return (
       <div>
-        <canvas id="myChart" ref={this.chartRef} />
+        <canvas id="lineChart" ref={this.chartRef} />
       </div>
     );
   }

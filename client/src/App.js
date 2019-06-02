@@ -10,7 +10,7 @@ import AddRun from "./components/run/AddRun";
 import EditRun from "./components/run/EditRun";
 import Dashboard from "./components/dashboard/Dashboard";
 import NavbarComponent from "./components/layout/Navbar";
-import Footer from "./components/layout/Footer";
+// import Footer from "./components/layout/Footer";
 
 // Styling
 import "./App.css";
