@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { registerUser } from "../../actions";
 import { withRouter } from "react-router-dom";
 
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
 import "./Register.scss";
 

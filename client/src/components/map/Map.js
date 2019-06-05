@@ -5,9 +5,6 @@ import {
   GoogleMap,
   Marker
 } from "react-google-maps";
-const {
-  MarkerWithLabel
-} = require("react-google-maps/lib/components/addons/MarkerWithLabel");
 
 class Map extends Component {
   constructor() {

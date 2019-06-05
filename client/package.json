@@ -16,10 +16,13 @@
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
+    "react-stripe-checkout": "^2.6.3",
+    "react-stripe-elements": "^3.0.0",
     "reactstrap": "^8.0.0",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
+    "stripe": "^7.1.0",
     "styled-components": "^4.2.0"
   },
   "scripts": {
@@ -42,6 +45,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "http://localhost:4000"
+  }
 }

@@ -105,7 +105,6 @@ export const getUserRuns = userID => dispatch => {
   axios
     .get(`${URL}/api/runs/user/${userID}`)
     .then(res => {
-      console.log(res);
       dispatch({
         type: GET_USER_RUNS,
         payload: res.data

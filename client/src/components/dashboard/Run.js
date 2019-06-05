@@ -3,14 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { deleteRun, getRun } from "../../actions";
 
-import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  Button
-} from "reactstrap";
+import { Card, CardText, CardBody, CardTitle, Button } from "reactstrap";
 
 import "./Run.scss";
 
