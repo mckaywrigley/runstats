@@ -35,6 +35,11 @@ class NavbarComponent extends Component {
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
                 <NavItem>
+                  <NavLink className="link" href="/plans">
+                    Plans
+                  </NavLink>
+                </NavItem>
+                <NavItem>
                   <NavLink className="link" href="/register">
                     Register
                   </NavLink>
@@ -58,6 +63,11 @@ class NavbarComponent extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
+                <NavItem>
+                  <NavLink className="link" href="/register">
+                    Plans
+                  </NavLink>
+                </NavItem>
                 <NavLink
                   className="link"
                   onClick={e => this.props.logoutUser()}

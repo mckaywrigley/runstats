@@ -11,6 +11,7 @@ import EditRun from "./components/run/EditRun";
 import Dashboard from "./components/dashboard/Dashboard";
 import NavbarComponent from "./components/layout/Navbar";
 // import Footer from "./components/layout/Footer";
+import Plans from "./components/plans/Plans";
 
 // Styling
 import "./App.css";
@@ -26,6 +27,7 @@ class App extends Component {
           <Route exact path="/addrun" component={AddRun} />
           <Route exact path="/editrun" component={EditRun} />
           <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/plans" component={Plans} />
           {/* <Footer /> */}
         </Router>
       </>
