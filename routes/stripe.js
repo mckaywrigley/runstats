@@ -8,7 +8,7 @@ const stripe = require("stripe")(stripeKey);
 router.post("/monthly", (req, res) => {
   stripe.charges
     .create({
-      amount: 5000,
+      amount: 500,
       currency: "usd",
       source: "tok_visa"
     })
