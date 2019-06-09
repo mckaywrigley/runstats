@@ -22,10 +22,15 @@ class Map extends Component {
     };
   }
 
+  componentDidMount() {
+    console.log(this.props)
+  }
+  
+
   render() {
     return (
       <GoogleMap
-        defaultZoom={15}
+        defaultZoom={13}
         defaultCenter={{ lat: this.props.lat, lng: this.props.lng }}
       >
         {this.state.runmarkers.map(runmarker => {
