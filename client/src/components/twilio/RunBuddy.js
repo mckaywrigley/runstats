@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { createReminder } from "../../actions";
 
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
@@ -16,7 +18,17 @@ class RunBuddy extends Component {
 
   submit = e => {
     e.preventDefault();
-    const reminder = {};
+    const reminder = {
+      reminderName: "Initial Reminder",
+      userPhoneNumber: this.state.userNumber,
+      buddyPhoneNumber: this.state.friendNumber,
+      timeZone: "UTC",
+      time: Date.now(),
+      user_id: this.props.auth.user.subject,
+      message: "Testing!"
+    };
+    console.log(reminder);
+    this.props.createReminder(reminder);
   };
 
   render() {
@@ -49,4 +61,11 @@ class RunBuddy extends Component {
   }
 }
 
-export default RunBuddy;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(
+  mapStateToProps,
+  { createReminder }
+)(RunBuddy);

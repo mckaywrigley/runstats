@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const moment = require("moment");
-const keys = require("../../config/keys");
+const keys = require("../config/keys");
 const Twilio = require("twilio");
 
 const ReminderSchema = new mongoose.Schema({
@@ -10,7 +10,7 @@ const ReminderSchema = new mongoose.Schema({
   notification: { type: Number, default: 0 },
   timeZone: String,
   time: { type: Date, index: true },
-  user_id: Number,
+  user_id: String,
   message: String
 });
 
@@ -50,7 +50,7 @@ ReminderSchema.statics.sendNotifications = function(callback) {
    * @param {array} reminders List of appointments.
    */
   function sendNotifications(reminders) {
-    const client = new Twilio(keys.twilioAccountSid, keys.twilioAuthToken);
+    const client = new Twilio(keys.twilioSid, keys.twilioAuth);
     reminders.forEach(function(reminder) {
       // Create options to send the message
       const options = {

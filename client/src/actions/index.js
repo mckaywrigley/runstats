@@ -145,7 +145,7 @@ export const editRun = (runID, run) => dispatch => {
 
 // Twilio --------------------------
 
-export const createReminder = reminder => {
+export const createReminder = reminder => dispatch => {
   axios
     .post(`${URL}/api/twilio/`, reminder)
     .then(res => console.log(res))
