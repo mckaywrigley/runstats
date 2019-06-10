@@ -29,7 +29,8 @@
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.24.0",
     "mongoose": "^5.5.11",
-    "stripe": "^7.1.0"
+    "stripe": "^7.1.0",
+    "twilio": "^3.31.1"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
