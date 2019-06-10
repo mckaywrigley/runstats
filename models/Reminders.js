@@ -10,7 +10,8 @@ const ReminderSchema = new mongoose.Schema({
   notification: { type: Number, default: 0 },
   timeZone: String,
   time: { type: Date, index: true },
-  user_id: Number
+  user_id: Number,
+  message: String
 });
 
 ReminderSchema.methods.requiresNotification = function(date) {
@@ -53,10 +54,10 @@ ReminderSchema.statics.sendNotifications = function(callback) {
     reminders.forEach(function(reminder) {
       // Create options to send the message
       const options = {
-        to: `+ ${reminder.phoneNumber}`,
+        to: reminder.phoneNumber,
         from: keys.twilioNumber,
         /* eslint-disable max-len */
-        body: `It's time to water your ${reminder.plantName}!`
+        body: reminder.message
         /* eslint-enable max-len */
       };
 
