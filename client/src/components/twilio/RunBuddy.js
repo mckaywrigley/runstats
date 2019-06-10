@@ -3,6 +3,11 @@ import React, { Component } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
 class RunBuddy extends Component {
+  state = {
+    userNumber: "",
+    friendNumber: ""
+  };
+
   inputChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -21,7 +26,7 @@ class RunBuddy extends Component {
         <FormGroup>
           <Label for="userNumber">Your Phone Number</Label>
           <Input
-            type="number"
+            type="text"
             name="userNumber"
             id="userNumber"
             placeholder="5556341228"
@@ -31,7 +36,7 @@ class RunBuddy extends Component {
         <FormGroup>
           <Label for="friendNumber">Run Buddy's Phone Number</Label>
           <Input
-            type="number"
+            type="text"
             name="friendNumber"
             id="friendNumber"
             placeholder="5552176499"

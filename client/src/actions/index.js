@@ -142,3 +142,12 @@ export const editRun = (runID, run) => dispatch => {
       console.log(err);
     });
 };
+
+// Twilio --------------------------
+
+export const createReminder = reminder => {
+  axios
+    .post(`${URL}/api/twilio/`, reminder)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
